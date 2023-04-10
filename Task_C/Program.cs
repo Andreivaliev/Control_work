@@ -11,7 +11,7 @@ void Print(string[] arr)
     Console.Write("]");
 }
 
-string[] MassCreate(int num)
+string[] MassCreate(int num, int k)
 {
     Console.WriteLine($"write {num} strings");
     string[] NewMas = new string[num + 1];
@@ -23,7 +23,7 @@ string[] MassCreate(int num)
         {
             i = num;
         }
-        else if (NewMas[i].Length <= 3)
+        else if (NewMas[i].Length <= k)
         {
             l = l + 1;
         }
@@ -32,14 +32,14 @@ string[] MassCreate(int num)
     return NewMas;
 }
 
-string[] MaxThreeSymMass(string[] mas, int num)
+string[] MaxThreeSymMass(string[] mas, int num, int k)
 {
     int row = int.Parse(mas[num]);
     string[] MasNew = new string[row];
     int j = 0;
     for (int i = 0; i < num; i++)
     {
-        if (mas[i] != null && mas[i].Length <=3)
+        if (mas[i] != null && mas[i].Length <= k && mas[i] != "stop")
         {
             MasNew[j] = mas[i];
             j = j + 1;
@@ -48,9 +48,11 @@ string[] MaxThreeSymMass(string[] mas, int num)
     return MasNew;
 }
 
-Console.WriteLine("rite the number of elements");
+Console.WriteLine("write the number of elements");
 int num = int.Parse(Console.ReadLine()!);
-string[] mas = MassCreate(num);
+Console.WriteLine("output length");
+int k1 = int.Parse(Console.ReadLine()!);
+string[] mas = MassCreate(num, k1);
 Console.WriteLine();
-string[] mas1 = MaxThreeSymMass(mas, num);
+string[] mas1 = MaxThreeSymMass(mas, num, k1);
 Print(mas1);
